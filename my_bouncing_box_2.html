@@ -1,0 +1,70 @@
+<html style="background-color: #111">
+    <body>
+        <div
+            id="my_box"
+            style="
+                background: url(img/dvdlogo-01.svg) no-repeat; /* purple */
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                width: 394px;
+                height: 180px;
+            "
+        ></div>
+    </body>
+    <script type="text/javascript">
+        var screenWidth = window.innerWidth;
+        var screenHeight = window.innerHeight;
+
+        var boxWidth = document.getElementById("my_box").clientWidth;
+        var boxHeight = document.getElementById("my_box").clientHeight;
+
+        var toTop = 0;
+        var toLeft = 0;
+
+        setInterval(animation, 6);
+
+        function animation() {
+            box = document.getElementById("my_box");
+
+            const colors = {
+                light_blue: "url(img/dvdlogo-02.svg) no-repeat",
+                brown: "url(img/dvdlogo-03.svg) no-repeat",
+                dark_blue: "url(img/dvdlogo-04.svg) no-repeat",
+                yellow: "url(img/dvdlogo-05.svg) no-repeat",
+                red: "url(img/dvdlogo-06.svg) no-repeat",
+                pink: "url(img/dvdlogo-07.svg) no-repeat",
+                green: "url(img/dvdlogo-08.svg) no-repeat",
+            };
+
+            if (toTop) {
+                box.style.top = parseInt(box.style.top) - 1 + "px";
+            } else {
+                box.style.top = parseInt(box.style.top) + 1 + "px";
+            }
+
+            if (toLeft) {
+                box.style.left = parseInt(box.style.left) - 1 + "px";
+            } else {
+                box.style.left = parseInt(box.style.left) + 1 + "px";
+            }
+
+            if (parseInt(box.style.top) == 0) {
+                toTop = 0;
+                box.style.background = colors.light_blue;
+            }
+            if (parseInt(box.style.left) == 0) {
+                toLeft = 0;
+                box.style.background = colors.brown;
+            }
+            if (parseInt(box.style.top) == screenHeight - boxHeight) {
+                toTop = 1;
+                box.style.background = colors.dark_blue;
+            }
+            if (parseInt(box.style.left) == screenWidth - boxWidth) {
+                toLeft = 1;
+                box.style.background = colors.pink;
+            }
+        }
+    </script>
+</html>
